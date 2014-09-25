@@ -1,11 +1,12 @@
 body {
     margin: 0 auto;
+    padding: 0 2px;
     text-align: center;
     max-width: 500px;
     background: #faf8ef;
     color: #776e65;
     font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
-    font-size: 18px;
+    font-size: 100%;
 }
 #header {
     margin: 30px auto;
@@ -23,7 +24,7 @@ body {
     line-height: 40px;
     padding: 0 20px;
 }
-#newgame:hover {
+#newgame:active {
     background-color: #CD5B45;
 }
 #score, #bestscore {
@@ -52,8 +53,8 @@ body {
     top: 5px;
     left: 0;
     text-transform: uppercase;
-    font-size: 13px;
-    line-height: 13px;
+    font-size: 0.8em;
+    line-height: 0.8;
     color: #eee4da;
 }
 #score:after {
@@ -81,9 +82,12 @@ body {
     width: 20%;
     height: 20%;
     border-radius: 3px;
-    font-size: 55px;
     font-weight: bold;
-    line-height: 175%;
+    transition: all 400ms;
+    -moz-transition: all 400ms;
+    -webkit-transition: all 400ms;
+    -o-transition: all 400ms;
+
 }
 .color2 {
     background: #eee4da;
@@ -133,4 +137,16 @@ body {
     color: #f9f6f2;
     background: #edc22e;
     box-shadow: 0 0 30px 10px rgba(243, 215, 116, 0.55556), inset 0 0 0 1px rgba(255, 255, 255, 0.33333);
+}
+.size1 {
+    font-size: 4em;
+}
+.size2 {
+    font-size: 3em;
+}
+.size3 {
+    font-size: 2em;
+}
+.size4 {
+    font-size: 1em;
 }
