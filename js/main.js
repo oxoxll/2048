@@ -17,4 +17,3 @@ $.fn.extend({
 	    });
 	}
 });
-$('#test').css('left', '100px');
