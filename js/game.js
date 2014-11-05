@@ -14,47 +14,89 @@ Game.prototype.init = function(){
 };
 Game.prototype.attachEvent = function(){
     var self = this;
+
+    function left(){
+        if(self.canMoveLeft()){
+            self.moveLeft();
+            setTimeout(function(){
+                self.randomOneNum();
+                self.update();
+            }, 400);
+        }
+    }
+
+    function up(){
+         if(self.canMoveUp()){
+            self.moveUp();
+            setTimeout(function(){
+                self.randomOneNum();
+                self.update();
+            }, 400);
+        }
+    }
+
+    function right(){
+        if(self.canMoveRight()){
+            self.moveRight();
+            setTimeout(function(){
+                self.randomOneNum();
+                self.update();
+            }, 400);
+        }
+    }
+
+    function down(){
+        if(self.canMoveDown()){
+            self.moveDown();
+            setTimeout(function(){
+                self.randomOneNum();
+                self.update();
+            }, 400);
+        }
+    }
+
+    
     $(document).keydown(function(e){
         switch(e.keyCode){
             case 37:
-                if(self.canMoveLeft()){
-                    self.moveLeft();
-                    setTimeout(function(){
-                        self.randomOneNum();
-                        self.update();
-                    }, 400);
-                }
+                left();
                 break;
             case 38:
-                if(self.canMoveUp()){
-                    self.moveUp();
-                    setTimeout(function(){
-                        self.randomOneNum();
-                        self.update();
-                    }, 400);
-                }
+                up();
                 break;
             case 39:
-                if(self.canMoveRight()){
-                    self.moveRight();
-                    setTimeout(function(){
-                        self.randomOneNum();
-                        self.update();
-                    }, 400);
-                }
+                right();
                 break;
             case 40:
-                if(self.canMoveDown()){
-                    self.moveDown();
-                    setTimeout(function(){
-                        self.randomOneNum();
-                        self.update();
-                    }, 400);
-                }
+                down();
                 break;
             default:
         }
+    }).on('touchstart', function(event){
+        
+        self.X = event.touches[0].pageX;
+        self.Y = event.touches[0].pageY;
+    }).on('touchmove', function(event){
+        
+        self.X2 = event.touches[0].pageX;
+        self.Y2 = event.touches[0].pageY;
+    }).on('touchend', function(event){
+        
+        if(Math.abs(self.X2-self.X) > Math.abs(self.Y2-self.Y)){//left or right
+            if(self.X2 > self.X){
+                right();
+            }else if(self.X2 < self.X) {
+                left();
+            }
+        }else if(Math.abs(self.X2-self.X) < Math.abs(self.Y2-self.Y)) {
+            if(self.Y2 > self.Y){
+                down();
+            }else if(self.Y2 < self.Y) {
+                up();
+            }
+        }
     });
+
 };
 
 Game.prototype.randomOneNum = function(){
