@@ -26,6 +26,10 @@ Game.prototype.attachEvent = function(){
     }
 
     function up(){
+        console.log('up:' + self.canMoveUp());
+        console.log('down:' + self.canMoveDown());
+        console.log('left:' + self.canMoveLeft());
+        console.log('right:' + self.canMoveRight());
          if(self.canMoveUp()){
             self.moveUp();
             setTimeout(function(){
@@ -150,7 +154,7 @@ Game.prototype.getPos = function(i, j){
 Game.prototype.canMoveLeft = function(){
     for(var i = 0; i < 4; i++){
         for(var j = 1; j < 4; j++){
-            if(this.data[i][j-1] == 0 || this.data[i][j] == this.data[i][j-1]){
+            if(this.data[i][j] != 0 && (this.data[i][j-1] == 0 || this.data[i][j] == this.data[i][j-1])){
                 return true;
             }
         }
@@ -160,7 +164,7 @@ Game.prototype.canMoveLeft = function(){
 Game.prototype.canMoveRight = function(){
     for(var i = 0; i < 4; i++){
         for(var j = 2; j >= 0; j--){
-            if(this.data[i][j+1] == 0 || this.data[i][j] == this.data[i][j+1]){
+            if(this.data[i][j] != 0 && (this.data[i][j+1] == 0 || this.data[i][j] == this.data[i][j+1])) {
                 return true;
             }
         }
@@ -170,7 +174,7 @@ Game.prototype.canMoveRight = function(){
 Game.prototype.canMoveUp = function(){
     for(var i = 1; i < 4; i++){
         for(var j = 0; j < 4; j++){
-            if(this.data[i-1][j] == 0 || this.data[i][j] == this.data[i-1][j]){
+            if(this.data[i][j] != 0 && (this.data[i-1][j] == 0 || this.data[i][j] == this.data[i-1][j])) {
                 return true;
             }
         }
@@ -180,7 +184,7 @@ Game.prototype.canMoveUp = function(){
 Game.prototype.canMoveDown = function(){
     for(var i = 2; i >= 0; i--){
         for(var j = 0; j < 4; j++){
-            if(this.data[i+1][j] == 0 || this.data[i][j] == this.data[i+1][j]){
+            if(this.data[i][j] != 0 && (this.data[i+1][j] == 0 || this.data[i][j] == this.data[i+1][j])) {
                 return true;
             }
         }
